@@ -34,7 +34,7 @@ class _Score
             Score.Render();
             Score.DrawInstrument();
         }
-        this.SetScaleRoot("C")
+        this.SetScaleRoot("C");
 
         let scale_pattern = document.getElementById("scale_pattern");
         scale_pattern.oninput = function()
@@ -120,7 +120,7 @@ class _Score
             this.ScaleKeys.push((this.ScaleKeys[i - 1] + parseInt(this.ScalePattern[(i - 1) % 7])) % 12);
         }
         this.SetScaleLabels();
-        console.log(this.ScaleKeys)
+        console.log(this.ScaleKeys);
         return true;
     }
 
@@ -162,7 +162,7 @@ class _Score
             Manager.DeleteInstrument();
             if (instName != undefined && instName != this.Instrument.Name)
             {
-                console.log("Clearing settings")
+                console.log("Clearing settings");
                 this.InstrumentSettings = null;
             }
         }
@@ -194,7 +194,7 @@ class _Score
     {
         this.Instrument.CountKeys();
         this.Instrument.Resize();
-        this.Instrument.Render()
+        this.Instrument.Render();
         this.DrawLabels();
     }
 

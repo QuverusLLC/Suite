@@ -146,7 +146,7 @@ class _Manager
     DeleteCanvas(alias)
     {
         let id = "canvas_" + id;
-        this.DeleteElements(id)
+        this.DeleteElements(id);
     }
 
     // Settings
@@ -230,7 +230,7 @@ class _Manager
         {
             return document.getElementById(id + "_element");
         }
-        this.InstrumentElements[id] = []
+        this.InstrumentElements[id] = [];
         let name = id + "_container";
 
         this.InstrumentElements[id].push(name);
@@ -238,15 +238,15 @@ class _Manager
         if (heading != undefined)
         {
             name = id + "_heading";
-            html += `  <p id="` + name + `">` + heading + `</p>\n`
+            html += `  <p id="` + name + `">` + heading + `</p>\n`;
             this.InstrumentElements[id].push(name);
         }
         name = id + "_element";
-        html += `  <select id="` + name + `" class="combo">\n`
+        html += `  <select id="` + name + `" class="combo">\n`;
         this.InstrumentElements[id].push(id + "_element");
         for (let i = 0; i < options.length; i++)
         {
-            name = "option_" + i + "_" + id
+            name = "option_" + i + "_" + id;
             if (selected == i)
             {
                 html += `    <option id="` + name + `" value="` + options[i][0] + `" selected>` + options[i][1] + `</option>\n`;
@@ -273,6 +273,6 @@ class _Manager
         ctx.font = this.LabelFont;
         ctx.fillStyle = this.LabelColor;
         ctx.textAlign = "center";
-        ctx.fillText(label, x, y)
+        ctx.fillText(label, x, y);
     }
 }
