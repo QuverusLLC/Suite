@@ -19,7 +19,7 @@ class _Manager
         this.SettingsContainer.style.justifyContent = "center";
         this.SettingsContainer.style.position = "relative";
         html = `
-<div class="scale_container" style="display: flex;">
+<div class="scale_container" style="display: flex; align-items: center;">
   <h2>Scale Settings</h2>
   <p>Root Note</p>
   <select id="scale_root" class=combo>
@@ -31,7 +31,7 @@ class _Manager
     <option value="F">F</option>
     <option value="F#">F#</option>
     <option value="G">G</option>
-    <option value="G#">/G#</option>
+    <option value="G#">G#</option>
     <option value="A">A</option>
     <option value="A#">A#</option>
     <option value="B">B</option>
@@ -46,6 +46,7 @@ class _Manager
     <option value="mixolydian">Mixolydian</option>
     <option value="locrian">Locrian</option>
     <option value="harmonic-minor">Harmonic Minor</option>
+    <option value="melodic-minor">Melodic Minor</option>
   </select>
 </div>`;
         this.SettingsContainer.insertAdjacentHTML('beforeend', html);
@@ -87,22 +88,29 @@ class _Manager
 
     DeleteInstrument()
     {
-        for (const [key, value] of Object.entries(this.InstrumentElements))
+        for (let key in this.InstrumentElements)
         {
-            for (let i = value.length; i >= 0; i--)
-            {
-                let doc = document.getElementById(value.pop())
-                if (doc != null)
-                {
-                    doc.remove();
-                }
-            }
-            delete this.InstrumentElements[key];
+            this.EraseElements(key);
         }
     }
 
-    CreateCanvas(id, width, height, heading = undefined, style = "border:1px solid #c3c3c3;")
+    EraseElements(key)
     {
+        let value = this.InstrumentElements[key];
+        for (let i = value.length; i >= 0; i--)
+        {
+            let doc = document.getElementById(value.pop())
+            if (doc != null)
+            {
+                doc.remove();
+            }
+        }
+        delete this.InstrumentElements[key];
+    }
+
+    CreateCanvas(alias, width, height, heading = undefined, style = "border:1px solid #c3c3c3;")
+    {
+        let id = "canvas_" + alias;
         let name = "";
         let html = "";
         this.InstrumentElements[id] = [];
@@ -116,7 +124,7 @@ class _Manager
         html += `<div id="` + name + `" class="` + name + `">\n`;
         this.InstrumentElements[id].push(name);
 
-        name = id + "_canvas";
+        name = id + "_element";
         html += `  <canvas id="` + name + `">Your browser does not support the canvas element.</canvas>\n</div>`;
         this.InstrumentElements[id].push(name);
         this.InstrumentContainer.insertAdjacentHTML('beforeend', html);
@@ -133,6 +141,131 @@ class _Manager
         canvas.setAttribute("height", height.toString());
         canvas.setAttribute("style", style);
         return canvas;
+    }
+
+    DeleteCanvas(alias)
+    {
+        let id = "canvas_" + id;
+        this.DeleteElements(id)
+    }
+
+    // Settings
+
+    SelectRow(row = this.InstrumentRows)
+    {
+        this.SelectedRow = row;
+    }
+
+    CreateRow(heading = undefined)
+    {
+        this.InstrumentRows++;
+        this.SelectedRow = this.InstrumentRows;
+        let id = "row_" + this.SelectedRow;
+        this.InstrumentElements[id] = [];
+
+        let name = id + "_container_parent";
+        this.InstrumentElements[id].push(name);
+        let html = `<div id="` + name + "" + `" class="` + name + `">\n`;
+        if (heading != undefined)
+        {
+            name = id + "_heading";
+            html += `  <p id="` + name + `" style="display: flex; align-items: center; justify-content: center;">` + heading + `</p>\n`;
+            this.InstrumentElements[id].push(name);
+        }
+        name = id + "_container";
+        html += `  <div id="` + name + "" + `" class="` + name + `">\n`;
+        this.InstrumentElements[id].push(name);
+
+        html += `  </div>\n</div>`;
+        this.InstrumentSettingsContainer.insertAdjacentHTML('beforeend', html);
+
+        let row = document.getElementById(name);
+        row.style.display = "flex";
+        row.style.alignItems = "center";
+        row.style.justifyContent = "center";
+        row.style.position = "relative";
+    }
+
+    DeleteRow(row)
+    {
+        let id = "row_" + row;
+        this.DeleteElements(id);
+    }
+
+    CreateSlider(alias, min, max, value, step = 1, heading = undefined)
+    {
+        let id = "slider_" + alias;
+        if (document.getElementById(id + "_container") != null)
+        {
+            return document.getElementById(id + "_element");
+        }
+        this.InstrumentElements[id] = [];
+        let name = id + "_container";
+        let html = `<div id="` + name + "" + `" class="` + name + `">\n`;
+        this.InstrumentElements[id].push(name);
+        if (heading != undefined)
+        {
+            name = id + "_heading";
+            html += `  <p id="` + name + `">` + heading + `</p>\n`;
+            this.InstrumentElements[id].push(name);
+        }
+        name = id + "_element";
+        html += `  <input id="` + name + `" type="range" class="slider" min="` + min + `" max="` + max + `" value="` + value +`" step="` + step +`"></input>`;
+        this.InstrumentElements[id].push(name);
+
+        document.getElementById("row_" + this.SelectedRow + "_container").insertAdjacentHTML('beforeend', html)
+        return document.getElementById(name);
+    }
+
+    DeleteSlider(alias)
+    {
+        let id = "slider_" + alias;
+        this.DeleteElements(id);
+    }
+
+    CreateCombo(alias, options, selected = 0, heading = undefined)
+    {
+        let id = "combo_" + alias;
+        if (document.getElementById(id + "_container") != null)
+        {
+            return document.getElementById(id + "_element");
+        }
+        this.InstrumentElements[id] = []
+        let name = id + "_container";
+
+        this.InstrumentElements[id].push(name);
+        let html = `<div id="` + name + "" + `" class="` + name + `">\n`;
+        if (heading != undefined)
+        {
+            name = id + "_heading";
+            html += `  <p id="` + name + `">` + heading + `</p>\n`
+            this.InstrumentElements[id].push(name);
+        }
+        name = id + "_element";
+        html += `  <select id="` + name + `" class="combo">\n`
+        this.InstrumentElements[id].push(id + "_element");
+        for (let i = 0; i < options.length; i++)
+        {
+            name = "option_" + i + "_" + id
+            if (selected == i)
+            {
+                html += `    <option id="` + name + `" value="` + options[i][0] + `" selected>` + options[i][1] + `</option>\n`;
+            }
+            else
+            {
+                html += `    <option id="` + name +`" value="` + options[i][0] + `">` + options[i][1] + `</option>\n`;
+            }
+            
+        }
+        html += `  </select>\n</div>`;
+        document.getElementById("row_" + this.SelectedRow + "_container").insertAdjacentHTML('beforeend', html);
+        return document.getElementById(id + "_element");
+    }
+
+    DeleteCombo(alias)
+    {
+        let id = "combo_" + alias;
+        this.DeleteElements(id);
     }
 
     DrawLabel(ctx, label, x, y)

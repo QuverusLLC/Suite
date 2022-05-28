@@ -1,37 +1,63 @@
 class Piano
 {
-    Initialize(width = 440, height = 100, octaves = 3, startKey = 0)
+    constructor()
     {
-        this.KeyWhiteColor = "#FFFFFF";
+        this.Name = "piano";
+    }
+    Initialize()
+    {
+        this.KeyWhiteColor = "#EEEEEE";
         this.KeyBlackColor = "#222222";
-        this.KeySeparatorColor = "#000000";
+        this.KeySeparatorColor = "#111111";
 
         this.KeyColors = "wbwbwwbwbwbw"; // Starting at C
         this.KeyStart = 0;
-        this.SetStart(startKey);
+        this.SetStart(0);
 
         this.OctaveCountWhite = 7;
         this.OctaveCountBlack = 5;
-        this.SetOctaves(octaves);
+        this.SetOctaves(3);
 
-        this.PianoWidth = width;
-        this.PianoHeight = height;
+        this.PianoWidth = 440;
+        this.PianoHeight = 100;
 
         this.canvas = undefined;
         this.ctx = undefined;
     }
 
+    SetSettings(dict)
+    {
+        this.PianoWidth = dict["Width"];
+        this.PianoHeight = dict["Height"];
+        this.Octaves = dict["Octaves"];
+        Score.PianoSettings();
+    }
+
+    GetSettings()
+    {
+        Score.PianoSettings();
+        return {
+            Width: this.PianoWidth,
+            Height: this.PianoHeight,
+            Octaves: this.Octaves,
+        }
+    }
+
     SetStart(keyStart)
     {
         let prevColors = this.KeyColors;
-        let difference = (this.KeyStart + keyStart) % 12;
-        this.KeyColors = "";
-        for (let i = 0; i < 12; i++)
+        let difference = (keyStart - this.KeyStart) + 12; // If number is negative modulus doesn't work, so add 12
+        console.log(difference);
+        if (difference != 0)
         {
-            let newColor = prevColors[(i + difference) % 12]
-            this.KeyColors += newColor;
+            this.KeyColors = "";
+            for (let i = 0; i < 12; i++)
+            {
+                let newColor = prevColors[(i + difference) % 12]
+                this.KeyColors += newColor;
+            }
+            this.KeyStart = keyStart;
         }
-        this.KeyStart = keyStart;
     }
     
     SetOctaves(octaves)
@@ -103,7 +129,7 @@ class Piano
         let counter = 0; // Counts how many time scale keys have been passed through
         for (let i = 0; i < this.KeyCount; i++)
         {
-            if (keyIndexes.includes(i % 12))
+            if (keyIndexes[counter % 7] == (i % 12))
             {
                 let label = keyLabels[counter % 7];
                 if (this.KeyColors[i % 12] == "w")

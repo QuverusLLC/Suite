@@ -12,6 +12,55 @@ class _Score
         this.ScalePattern = undefined;
 
         this.NoteLabels = [ ["C", "B#"], ["C#", "D♭"], ["D"], ["D#", "E♭"], ["E", "F♭"], ["F", "E#"], ["F#", "G♭"], ["G"], ["G#", "A♭"], ["A"], ["A#", "B♭"], ["B", "C♭"] ];
+        
+        this.Instrument = undefined;
+        this.InstrumentSettings = null;
+    }
+
+    Initialize()
+    {
+        let instrument_selector = document.getElementById("select_instrument");
+        instrument_selector.oninput = function()
+        {
+            Score.Render(this.value);
+        }
+        this.Render(instrument_selector.value);
+
+        let scale_root = document.getElementById("scale_root");
+        scale_root.oninput = function()
+        {
+            Score.SetScaleRoot(this.value)
+            Score.SetScaleKeys();
+            Score.Render();
+            Score.DrawInstrument();
+        }
+        this.SetScaleRoot("C")
+
+        let scale_pattern = document.getElementById("scale_pattern");
+        scale_pattern.oninput = function()
+        {
+            
+            Score.SetScalePattern(this.value);
+            Score.SetScaleKeys();
+            Score.Render();
+            Score.DrawInstrument();
+        }
+        this.SetScalePattern("major");
+        
+        this.SetScaleKeys();
+        this.DrawLabels();
+    }
+
+    GetNoteID(note)
+    {
+        for (let i = 0; i < this.NoteLabels.length; i++)
+        {
+            if (this.NoteLabels[i].includes(note))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     SetScaleRoot(scaleRoot)
@@ -23,7 +72,6 @@ class _Score
                 this.ScaleRoot = i;
             }
         }
-        console.log("ScaleRoot:", this.ScaleRoot)
     }
 
     SetScalePattern(scalePattern)
@@ -54,8 +102,10 @@ class _Score
             case "harmonic-minor":
                 this.ScalePattern = "2122131";
                 break;
+            case "melodic-minor":
+                this.ScalePattern = "2122221";
+                break;
         }
-        console.log("ScalePattern:", this.ScalePattern)
     }
 
     SetScaleKeys()
@@ -67,10 +117,10 @@ class _Score
         this.ScaleKeys = [this.ScaleRoot];
         for (let i = 1; i < 7; i++)
         {
-            this.ScaleKeys.push((this.ScaleKeys[i - 1] + parseInt(this.ScalePattern[(i - 1) % 7])) % 12)
+            this.ScaleKeys.push((this.ScaleKeys[i - 1] + parseInt(this.ScalePattern[(i - 1) % 7])) % 12);
         }
-        console.log("Scale keys:", this.ScaleKeys);
         this.SetScaleLabels();
+        console.log(this.ScaleKeys)
         return true;
     }
 
@@ -105,63 +155,44 @@ class _Score
         }
     }
 
-    Initialize()
-    {
-        this.Instrument = undefined;
-
-        let instrument_selector = document.getElementById("select_instrument");
-        instrument_selector.oninput = function()
-        {
-            Score.Render(this.value);
-        }
-        this.Render(instrument_selector.value);
-
-        let scale_root = document.getElementById("scale_root");
-        scale_root.oninput = function()
-        {
-            Score.SetScaleRoot(this.value)
-            Score.SetScaleKeys();
-            Score.Render();
-            Score.DrawInstrument();
-        }
-        this.SetScaleRoot("C")
-
-        let scale_pattern = document.getElementById("scale_pattern");
-        scale_pattern.oninput = function()
-        {
-            
-            Score.SetScalePattern(this.value);
-            Score.SetScaleKeys();
-            Score.Render();
-            Score.DrawInstrument();
-        }
-        this.SetScalePattern("major");
-        
-        this.SetScaleKeys();
-        this.DrawLabels();
-    }
-
     Render(instName)
     {
         if (this.Instrument != undefined)
         {
             Manager.DeleteInstrument();
+            if (instName != undefined && instName != this.Instrument.Name)
+            {
+                console.log("Clearing settings")
+                this.InstrumentSettings = null;
+            }
         }
-        switch(instName)
+        if (instName != undefined)
         {
-            case "piano":
-                this.Instrument = new Piano();
-                break;
-            case "guitar":
-                //this.Instrument = new Guitar();
-                break;
+            switch(instName)
+            {
+                case "piano":
+                    this.Instrument = new Piano();
+                    break;
+                case "guitar":
+                    //this.Instrument = new Guitar();
+                    break;
+            }
         }
         this.Instrument.Initialize();
+        if (this.InstrumentSettings == null)
+        {
+            this.InstrumentSettings = this.Instrument.GetSettings();
+        }
+        else
+        {
+            this.Instrument.SetSettings(this.InstrumentSettings);
+        }
         this.DrawInstrument();
     }
 
     DrawInstrument()
     {
+        this.Instrument.CountKeys();
         this.Instrument.Resize();
         this.Instrument.Render()
         this.DrawLabels();
@@ -174,6 +205,30 @@ class _Score
             return;
         }
         this.Instrument.DrawLabels(this.ScaleKeys, this.ScaleLabels, true);
+    }
+
+    PianoSettings()
+    {
+        Manager.CreateRow();
+
+        Manager.CreateSlider("width", 400, 1000, this.Instrument.PianoWidth, 1, "Width").oninput = function()
+        {
+            Score.Instrument.PianoWidth = parseInt(this.value, 10);
+            Score.InstrumentSettings = Score.Instrument.GetSettings();
+            Score.DrawInstrument();
+        }
+        Manager.CreateSlider("height", 70, 200, this.Instrument.PianoHeight, 1, "Height").oninput = function()
+        {
+            Score.Instrument.PianoHeight = parseInt(this.value, 10);
+            Score.InstrumentSettings = Score.Instrument.GetSettings();
+            Score.DrawInstrument();
+        }
+        Manager.CreateSlider("octaves", 2, 6, this.Instrument.Octaves, 1, "Octaves").oninput = function()
+        {
+            Score.Instrument.SetOctaves(parseInt(this.value, 10));
+            Score.InstrumentSettings = Score.Instrument.GetSettings();
+            Score.DrawInstrument();
+        }
     }
 }
 const Manager = new _Manager();
