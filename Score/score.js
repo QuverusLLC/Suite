@@ -120,7 +120,6 @@ class _Score
             this.ScaleKeys.push((this.ScaleKeys[i - 1] + parseInt(this.ScalePattern[(i - 1) % 7])) % 12);
         }
         this.SetScaleLabels();
-        console.log(this.ScaleKeys);
         return true;
     }
 
@@ -174,7 +173,7 @@ class _Score
                     this.Instrument = new Piano();
                     break;
                 case "guitar":
-                    //this.Instrument = new Guitar();
+                    this.Instrument = new Guitar();
                     break;
             }
         }
@@ -192,9 +191,18 @@ class _Score
 
     DrawInstrument()
     {
-        this.Instrument.CountKeys();
-        this.Instrument.Resize();
-        this.Instrument.Render();
+        if (this.Instrument.Name == "piano")
+        {
+            this.Instrument.CountKeys();
+            this.Instrument.Resize();
+            this.Instrument.Render();
+        }
+        else if (this.Instrument.Name == "guitar")
+        {
+            this.Instrument.ReTune();
+            this.Instrument.Resize();
+            this.Instrument.Render();
+        }
         this.DrawLabels();
     }
 
@@ -226,6 +234,49 @@ class _Score
         Manager.CreateSlider("octaves", 2, 6, this.Instrument.Octaves, 1, "Octaves").oninput = function()
         {
             Score.Instrument.SetOctaves(parseInt(this.value, 10));
+            Score.InstrumentSettings = Score.Instrument.GetSettings();
+            Score.DrawInstrument();
+        }
+    }
+
+    GuitarSettings()
+    {
+        Manager.CreateRow()
+
+        Manager.CreateCombo("string_count", [[4,4], [5,5], [6,6], [7,7], [8,8], [9,9], [10,10], [11,11], [12,12]], this.Instrument.StringCount - 4, "Strings").oninput = function()
+        {
+            Manager.SelectRow(1)
+            Score.Instrument.StringCount = parseInt(this.value, 10);
+            while (Score.Instrument.StringCount > Score.Instrument.TuningLabels.length)
+            {
+                Score.Instrument.TuningLabels.push("E")
+                Score.Instrument.AddTuningCombo(Score.Instrument.TuningLabels.length - 1)
+            }
+            while (Score.Instrument.StringCount < Score.Instrument.TuningLabels.length)
+            {
+                Score.Instrument.TuningLabels.pop();
+                Manager.DeleteCombo("tuning_" + Score.Instrument.TuningLabels.length)
+            }
+            Manager.SelectRow();
+            Score.InstrumentSettings = Score.Instrument.GetSettings();
+            Score.DrawInstrument();
+        }
+        for (let string = 0; string < this.Instrument.StringCount; string++)
+        {
+            this.Instrument.AddTuningCombo(string);
+        }
+
+        Manager.CreateRow();
+
+        Manager.CreateSlider("width", 400, 1000, this.Instrument.NeckWidth, 1, "Width").oninput = function()
+        {
+            Score.Instrument.NeckWidth = parseInt(this.value, 10);
+            Score.InstrumentSettings = Score.Instrument.GetSettings();
+            Score.DrawInstrument();
+        }
+        Manager.CreateSlider("height", 100, 300, this.Instrument.NeckHeight, 1, "Height").oninput = function()
+        {
+            Score.Instrument.NeckHeight = parseInt(this.value, 10);
             Score.InstrumentSettings = Score.Instrument.GetSettings();
             Score.DrawInstrument();
         }

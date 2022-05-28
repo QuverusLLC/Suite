@@ -47,8 +47,7 @@ class Piano
     {
         let prevColors = this.KeyColors;
         let difference = (keyStart - this.KeyStart) + 12; // If number is negative modulus doesn't work, so add 12
-        console.log(difference);
-        if (difference != 0)
+        if (difference % 12 == 0)
         {
             this.KeyColors = "";
             for (let i = 0; i < 12; i++)
@@ -111,7 +110,6 @@ class Piano
         this.ctx = this.canvas.getContext("2d");
 
         // White keys
-
         this.ctx.fillStyle = this.KeyWhiteColor;
         this.ctx.fillRect(0, 0, this.PianoWidth, this.PianoHeight);
         

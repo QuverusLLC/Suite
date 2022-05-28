@@ -6,8 +6,10 @@ class _Manager
         this.InstrumentElements = {}
         this.DefineElements();
 
-        this.LabelFont = "bold 14px arial";
+        this.LabelFont = "bold 14px roboto mono";
         this.LabelColor = "#00ba6c";
+        this.InstrumentRows = 0;
+        this.SelectedRow = 0;
     }
 
     DefineElements()
@@ -92,6 +94,8 @@ class _Manager
         {
             this.EraseElements(key);
         }
+        this.InstrumentRows = 0;
+        this.SelectedRow = 0;
     }
 
     EraseElements(key)
@@ -145,8 +149,8 @@ class _Manager
 
     DeleteCanvas(alias)
     {
-        let id = "canvas_" + id;
-        this.DeleteElements(id);
+        let id = "canvas_" + alias;
+        this.EraseElements(id);
     }
 
     // Settings
@@ -189,7 +193,7 @@ class _Manager
     DeleteRow(row)
     {
         let id = "row_" + row;
-        this.DeleteElements(id);
+        this.EraseElements(id);
     }
 
     CreateSlider(alias, min, max, value, step = 1, heading = undefined)
@@ -220,7 +224,7 @@ class _Manager
     DeleteSlider(alias)
     {
         let id = "slider_" + alias;
-        this.DeleteElements(id);
+        this.EraseElements(id);
     }
 
     CreateCombo(alias, options, selected = 0, heading = undefined)
@@ -265,7 +269,7 @@ class _Manager
     DeleteCombo(alias)
     {
         let id = "combo_" + alias;
-        this.DeleteElements(id);
+        this.EraseElements(id);
     }
 
     DrawLabel(ctx, label, x, y)
