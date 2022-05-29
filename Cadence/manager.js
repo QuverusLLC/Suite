@@ -49,13 +49,13 @@ Header Container`;
     <div id="panel-left-content-container" class="panel-left-content-container">
         <div id="left-body-container" class="left-body-container">
             <div id="left-content-number-container" class="left-content-number-container">
-                <textarea readonly id="lyrics-lines" class="lyrics-lines" style="height: 100%; width: 100%;"></textarea>
+                <textarea readonly id="lyrics-lines" class="lyrics-lines" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
             </div>
             <div id="left-content-lyrics-container" class="left-content-lyrics-container">
-                <textarea id="lyrics-textarea" class="lyrics-textarea" placeholder="Type lyrics here" style="height: 100%; width: 99%; overflow: auto;"></textarea>
+                <textarea id="lyrics-textarea" class="lyrics-textarea" placeholder="Type lyrics here" style="height: 100%; width: 99%; overflow: auto; overflow: hidden;"></textarea>
             </div>
             <div id="left-content-syllables-container" class="left-content-syllables-container">
-                <textarea readonly id="lyrics-syllables" class="lyrics-syllables" style="height: 100%; width: 100%;"></textarea>
+                <textarea readonly id="lyrics-syllables" class="lyrics-syllables" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
             </div>
         </div>
     </div>
@@ -150,6 +150,7 @@ html, body {
 .panel-right {
     position: relative;
     width: 30%;
+    overflow: hidden;
 }
 .left-content-number-container {
     float: left;
