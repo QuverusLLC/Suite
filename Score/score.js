@@ -1,3 +1,5 @@
+const Manager = new _Manager();
+
 function Initialize()
 {
     Score.Initialize();
@@ -161,7 +163,6 @@ class _Score
             Manager.DeleteInstrument();
             if (instName != undefined && instName != this.Instrument.Name)
             {
-                console.log("Clearing settings");
                 this.InstrumentSettings = null;
             }
         }
@@ -282,5 +283,4 @@ class _Score
         }
     }
 }
-const Manager = new _Manager();
 const Score = new _Score();

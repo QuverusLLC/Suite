@@ -15,7 +15,41 @@ class _Manager
     DefineElements()
     {
         let html = "";
+        this.TitleContainer = document.getElementById("title_container");
+        this.HeaderContainer = document.getElementById("header_container");
+        this.BodyContainer = document.getElementById("body_container");
+        this.FooterContainer = document.getElementById("footer_container");
+        this.StyleContainer = document.getElementById("style_container");
+
+        html = `
+<div class="title_name" class="title_name" style="padding: 10px;">
+    <h2>Score</h2>
+</div>
+<div class="title_version" class="title_version" style="padding: 2px;">
+    <p style="font-size: 10px; vertical-align: bottom;">0.1.0</p>
+</div>
+<div class="title_other" class="title_other" style="padding: 20px;">
+    <p style="font-size: 12px; text-align: right;">A part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
+</div>`;
+        this.TitleContainer.insertAdjacentHTML('beforeend', html);
+        this.TitleContainer.style.display = "flex";
+        this.TitleContainer.style.width = "100%";
+        this.TitleContainer.style.alignItems = "center";
+        this.TitleContainer.style.margin = "0px";
+        this.TitleContainer.style.border = "1px solid var(--separator)"
+        this.TitleContainer.style.height = "5%";
+
+        html = `
+<div id="settings_container" class="settings_container"></div>
+<div id="instrument_selection_container" class="instrument_selection_container"></div>
+<div id="instrument_settings_container" class="instrument_settings_container"></div>
+<div id="instrument_container" class="instrument_container"></div>`;
+        this.BodyContainer.insertAdjacentHTML('beforeend', html);
+
         this.SettingsContainer = document.getElementById('settings_container');
+        this.InstrumentSelectionContainer = document.getElementById('instrument_selection_container');
+        this.InstrumentSettingsContainer = document.getElementById('instrument_settings_container');
+
         this.SettingsContainer.style.display = "flex";
         this.SettingsContainer.style.alignItems = "center";
         this.SettingsContainer.style.justifyContent = "center";
@@ -52,7 +86,7 @@ class _Manager
   </select>
 </div>`;
         this.SettingsContainer.insertAdjacentHTML('beforeend', html);
-        this.InstrumentSelectionContainer = document.getElementById('instrument_selection_container');
+        
         this.InstrumentSelectionContainer.style.display = "flex";
         this.InstrumentSelectionContainer.style.alignItems = "center";
         this.InstrumentSelectionContainer.style.justifyContent = "center";
@@ -67,13 +101,21 @@ class _Manager
   <button onclick="Manager.ToggleSettings();">Settings</button>
 </div>`;
         this.InstrumentSelectionContainer.insertAdjacentHTML('beforeend', html);
-        this.InstrumentSettingsContainer = document.getElementById('instrument_settings_container');
+        
         this.InstrumentSettingsContainer.style.display = "none";
         this.InstrumentSettingsContainer.style.alignItems = "center";
         this.InstrumentSettingsContainer.style.justifyContent = "center";
 
         this.InstrumentContainer = document.getElementById('instrument_container');
-        this.StyleContainer = document.getElementById('style');
+
+        html = `
+html, body {
+    background: var(--background);
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}`
+        this.StyleContainer.insertAdjacentHTML('beforeend', html);
     }
 
     ToggleSettings()

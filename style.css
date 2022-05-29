@@ -1,0 +1,66 @@
+:root {
+    --background: #000000;
+    --background1: #111111;
+    --foreground: #FFFFFF;
+    --foreground1: #00ba6c;
+    --separator: #444444;
+    --font-family: "Roboto Mono", sans-serif;
+    --font-size: 12px;
+    --font-style: normal;
+    --font-weight: 100;
+    --letter-spacing: 1px;
+}
+
+body {
+    color: var(--foreground);
+    font-family: var(--font-family);
+    letter-spacing: var(--letter-spacing);
+}
+
+h1 {
+    color: var(--foreground);
+    font-family: var(--font-family);
+    letter-spacing: var(--letter-spacing);
+}
+
+h2 {
+    color: var(--foreground);
+    font-family: var(--font-family);
+    letter-spacing: var(--letter-spacing);
+}
+
+h3 {
+    color: var(--foreground);
+    font-family: var(--font-family);
+    letter-spacing: var(--letter-spacing);
+}
+
+h4 {
+    color: var(--foreground);
+    font-family: var(--font-family);
+    letter-spacing: var(--letter-spacing);
+}
+
+input {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    border: 0px;
+}
+
+textarea {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    letter-spacing: var(--letter-spacing);
+    border: 0px;
+    resize: none;
+    text-shadow: none;
+}
+
+textarea:focus {
+    outline: none;
+}
