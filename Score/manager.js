@@ -36,7 +36,7 @@ class _Manager
         this.TitleContainer.style.width = "100%";
         this.TitleContainer.style.alignItems = "center";
         this.TitleContainer.style.margin = "0px";
-        this.TitleContainer.style.border = "1px solid var(--separator)"
+        this.TitleContainer.style.border = "1px solid var(--dvSuite_separator)"
         this.TitleContainer.style.height = "5%";
 
         html = `
@@ -110,7 +110,7 @@ class _Manager
 
         html = `
 html, body {
-    background: var(--background);
+    background: var(--dvSuite_background);
     height: 100%;
     width: 100%;
     margin: 0px;

@@ -28,7 +28,7 @@ class _Manager
         this.TitleContainer.style.width = "100%";
         this.TitleContainer.style.alignItems = "center";
         this.TitleContainer.style.margin = "0px";
-        this.TitleContainer.style.border = "1px solid var(--separator)"
+        this.TitleContainer.style.border = "1px solid var(--dvSuite_separator)"
         this.TitleContainer.style.height = "5%";
 
         html = `
@@ -38,7 +38,7 @@ Header Container`;
         this.HeaderContainer.style.width = "100%";
         this.HeaderContainer.style.alignItems = "center";
         this.HeaderContainer.style.margin = "0px";
-        this.HeaderContainer.style.border = "1px solid var(--separator)"
+        this.HeaderContainer.style.border = "1px solid var(--dvSuite_separator)"
         this.HeaderContainer.style.height = "10%";
 
         html = `
@@ -84,7 +84,7 @@ Header Container`;
 
         html = `
 html, body {
-    background: var(--background);
+    background: var(--dvSuite_background);
     height: 100%;
     width: 100%;
     margin: 0px;
@@ -109,7 +109,7 @@ html, body {
 .panel-left,
 .panel-middle,
 .panel-right {
-    border: 1px solid var(--separator);
+    border: 1px solid var(--dvSuite_separator);
     position: relative;
     width: 100%;
     height: 100%;
@@ -123,7 +123,7 @@ html, body {
     margin: 0px;
     top: -20px;
     height: 30px;
-    background: var(--background1);
+    background: var(--dvSuite_background1);
 }
 .panel-middle-content-container,
 .panel-left-content-container,
@@ -143,7 +143,7 @@ html, body {
     margin: 0px;
     width: 100%;
     height: 100%;
-    border: 1px solid var(--separator);
+    border: 1px solid var(--dvSuite_separator);
     overflow: hidden;
 }
 .panel-left,
@@ -161,9 +161,9 @@ html, body {
     max-width: 20px;
     top: -1px;
     left: -1px;
-    font-family: var(--font-family);
-    letter-spacing: var(--letter-spacing);
-    font-size: var(--font-size);
+    font-family: var(--dvSuite_font-family);
+    letter-spacing: var(--dvSuite_letter-spacing);
+    font-size: var(--dvSuite_font-size);
     text-align: left;
     overflow: hidden;
 }
@@ -187,9 +187,9 @@ html, body {
     max-width: 20px;
     top: -1px;
     right: -1px;
-    font-family: var(--font-family);
-    letter-spacing: var(--letter-spacing);
-    font-size: var(--font-size);
+    font-family: var(--dvSuite_font-family);
+    letter-spacing: var(--dvSuite_letter-spacing);
+    font-size: var(--dvSuite_font-size);
     text-align: right;
     overflow: hidden;
 }`;
