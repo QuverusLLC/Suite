@@ -18,18 +18,17 @@ class _Manager
     <h2>Cadence</h2>
 </div>
 <div class="title_version" class="title_version" style="padding: 2px;">
-    <p style="font-size: 10px; vertical-align: bottom;">0.0.2</p>
+    <sup style="font-size: 10px;">0.0.2</sup>
 </div>
 <div class="title_other" class="title_other" style="padding: 20px;">
-    <p style="font-size: 12px; text-align: right;">A part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
+    <p style="font-size: 12px; text-align: right;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
 </div>`;
         this.TitleContainer.insertAdjacentHTML('beforeend', html);
         this.TitleContainer.style.display = "flex";
         this.TitleContainer.style.width = "100%";
         this.TitleContainer.style.alignItems = "center";
-        this.TitleContainer.style.margin = "0px";
         this.TitleContainer.style.border = "1px solid var(--dvSuite_separator)"
-        this.TitleContainer.style.height = "5%";
+        this.TitleContainer.style.height = "25px";
 
         html = `
 Header Container`;
@@ -37,9 +36,8 @@ Header Container`;
         this.HeaderContainer.style.display = "flex";
         this.HeaderContainer.style.width = "100%";
         this.HeaderContainer.style.alignItems = "center";
-        this.HeaderContainer.style.margin = "0px";
         this.HeaderContainer.style.border = "1px solid var(--dvSuite_separator)"
-        this.HeaderContainer.style.height = "10%";
+        this.HeaderContainer.style.height = "40px";
 
         html = `
 <div id="panel-left" class="panel-left">
@@ -52,7 +50,7 @@ Header Container`;
                 <textarea readonly id="lyrics-lines" class="lyrics-lines" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
             </div>
             <div id="left-content-lyrics-container" class="left-content-lyrics-container">
-                <textarea id="lyrics-textarea" class="lyrics-textarea" placeholder="Type lyrics here" style="height: 100%; width: 99%; overflow: auto; overflow: hidden;"></textarea>
+                <textarea id="lyrics-textarea" class="lyrics-textarea" placeholder="Type lyrics here" style="height: 100%; width: 100%; overflow: auto; overflow: hidden;"></textarea>
             </div>
             <div id="left-content-syllables-container" class="left-content-syllables-container">
                 <textarea readonly id="lyrics-syllables" class="lyrics-syllables" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
@@ -156,32 +154,36 @@ html, body {
     float: left;
     position: relative;
     vertical-align: top;
+    overflow: hidden;
     height: 100%;
     width: 5%;
-    min-width: 20px;
-    max-width: 20px;
+    min-width: 24px;
+    max-width: 24px;
     top: -1px;
     left: -1px;
     font-family: var(--dvSuite_font-family);
     letter-spacing: var(--dvSuite_letter-spacing);
     font-size: var(--dvSuite_font-size);
     text-align: left;
-    overflow: hidden;
 }
 .left-content-lyrics-container {
     float: left;
     position: relative;
     vertical-align: top;
+    overflow: hidden;
     height: 100%;
     min-width: 173px;
     width: 81%;
     max-width: 90%;
-    overflow: hidden;
+    font-family: var(--dvSuite_font-family);
+    letter-spacing: var(--dvSuite_letter-spacing);
+    font-size: var(--dvSuite_font-size);
 }
 .left-content-syllables-container {
     float: right;
     position: relative;
     vertical-align: top;
+    overflow: hidden;
     height: 100%;
     width: 5%;
     min-width: 20px;
@@ -192,7 +194,6 @@ html, body {
     letter-spacing: var(--dvSuite_letter-spacing);
     font-size: var(--dvSuite_font-size);
     text-align: right;
-    overflow: hidden;
 }`;
         this.StyleContainer.insertAdjacentHTML('beforeend', html);
     }

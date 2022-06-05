@@ -26,10 +26,10 @@ class _Manager
     <h2>Score</h2>
 </div>
 <div class="title_version" class="title_version" style="padding: 2px;">
-    <p style="font-size: 10px; vertical-align: bottom;">0.1.0</p>
+    <sup style="font-size: 10px;">0.1.1</sup>
 </div>
 <div class="title_other" class="title_other" style="padding: 20px;">
-    <p style="font-size: 12px; text-align: right;">A part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
+    <p style="font-size: 12px; text-align: right;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
 </div>`;
         this.TitleContainer.insertAdjacentHTML('beforeend', html);
         this.TitleContainer.style.display = "flex";
@@ -37,55 +37,66 @@ class _Manager
         this.TitleContainer.style.alignItems = "center";
         this.TitleContainer.style.margin = "0px";
         this.TitleContainer.style.border = "1px solid var(--dvSuite_separator)"
-        this.TitleContainer.style.height = "5%";
+        this.TitleContainer.style.height = "25px";
 
         html = `
-<div id="settings_container" class="settings_container"></div>
+<div id="settings_container" class="settings_container" style="display: flex; align-items: center;">
+    <h3 style="padding: 10px;">Scale Settings</h3>
+    <div class="scale_settings_container" style="display: flex; align-items: center;">
+        <div class="root_container" style="display: flex; align-items: center; padding: 10px;">
+            <h4 style="font-size: 12px; padding: 5px;">Root Note:</h4>
+            <select id="scale_root" class=combo style="font-size: 12px;">
+                <option value="C" selected>C</option>
+                <option value="C#">C#</option>
+                <option value="D">D</option>
+                <option value="D#">D#</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="F#">F#</option>
+                <option value="G">G</option>
+                <option value="G#">G#</option>
+                <option value="A">A</option>
+                <option value="A#">A#</option>
+                <option value="B">B</option>
+            </select>
+        </div>
+        <div class="pattern_container" style="display: flex; align-items: center; padding: 10px;">
+            <h4 style="font-size: 12px; padding: 5px;">Scale:</h4>
+            <select id="scale_pattern" class=combo style="font-size: 12px;">
+                <option value="major" selected>Major (Ionian)</option>
+                <option value="minor">Minor (Aeolian)</option>
+                <option value="dorian">Dorian</option>
+                <option value="phrygian">Phrygian</option>
+                <option value="lydian">Lydian</option>
+                <option value="mixolydian">Mixolydian</option>
+                <option value="locrian">Locrian</option>
+                <option value="harmonic-minor">Harmonic Minor</option>
+                <option value="melodic-minor">Melodic Minor</option>
+            </select>
+        </div>
+    </div>
+</div>`;
+        this.HeaderContainer.insertAdjacentHTML('beforeend', html);
+        this.HeaderContainer.style.display = "flex";
+        this.HeaderContainer.style.width = "100%";
+        this.HeaderContainer.style.alignItems = "center";
+        this.HeaderContainer.style.border = "1px solid var(--dvSuite_separator)"
+        this.HeaderContainer.style.height = "40px";
+
+        this.SettingsContainer = document.getElementById('settings_container');
+        this.SettingsContainer.style.display = "flex";
+        this.SettingsContainer.style.alignItems = "center";
+        this.SettingsContainer.style.justifyContent = "center";
+        this.SettingsContainer.style.position = "relative";
+
+        html = `
 <div id="instrument_selection_container" class="instrument_selection_container"></div>
 <div id="instrument_settings_container" class="instrument_settings_container"></div>
 <div id="instrument_container" class="instrument_container"></div>`;
         this.BodyContainer.insertAdjacentHTML('beforeend', html);
 
-        this.SettingsContainer = document.getElementById('settings_container');
         this.InstrumentSelectionContainer = document.getElementById('instrument_selection_container');
         this.InstrumentSettingsContainer = document.getElementById('instrument_settings_container');
-
-        this.SettingsContainer.style.display = "flex";
-        this.SettingsContainer.style.alignItems = "center";
-        this.SettingsContainer.style.justifyContent = "center";
-        this.SettingsContainer.style.position = "relative";
-        html = `
-<div class="scale_container" style="display: flex; align-items: center;">
-  <h2>Scale Settings</h2>
-  <p>Root Note</p>
-  <select id="scale_root" class=combo>
-    <option value="C" selected>C</option>
-    <option value="C#">C#</option>
-    <option value="D">D</option>
-    <option value="D#">D#</option>
-    <option value="E">E</option>
-    <option value="F">F</option>
-    <option value="F#">F#</option>
-    <option value="G">G</option>
-    <option value="G#">G#</option>
-    <option value="A">A</option>
-    <option value="A#">A#</option>
-    <option value="B">B</option>
-  </select>
-  <p>Pattern</p>
-  <select id="scale_pattern" class=combo>
-    <option value="major" selected>Major (Ionian)</option>
-    <option value="minor">Minor (Aeolian)</option>
-    <option value="dorian">Dorian</option>
-    <option value="phrygian">Phrygian</option>
-    <option value="lydian">Lydian</option>
-    <option value="mixolydian">Mixolydian</option>
-    <option value="locrian">Locrian</option>
-    <option value="harmonic-minor">Harmonic Minor</option>
-    <option value="melodic-minor">Melodic Minor</option>
-  </select>
-</div>`;
-        this.SettingsContainer.insertAdjacentHTML('beforeend', html);
         
         this.InstrumentSelectionContainer.style.display = "flex";
         this.InstrumentSelectionContainer.style.alignItems = "center";
@@ -107,15 +118,6 @@ class _Manager
         this.InstrumentSettingsContainer.style.justifyContent = "center";
 
         this.InstrumentContainer = document.getElementById('instrument_container');
-
-        html = `
-html, body {
-    background: var(--dvSuite_background);
-    height: 100%;
-    width: 100%;
-    margin: 0px;
-}`
-        this.StyleContainer.insertAdjacentHTML('beforeend', html);
     }
 
     ToggleSettings()
@@ -132,9 +134,10 @@ html, body {
 
     DeleteInstrument()
     {
-        for (let key in this.InstrumentElements)
+        let keys = Object.keys(this.InstrumentElements).reverse();
+        for (let key in keys)
         {
-            this.EraseElements(key);
+            this.EraseElements(keys[key]);
         }
         this.InstrumentRows = 0;
         this.SelectedRow = 0;
@@ -143,9 +146,10 @@ html, body {
     EraseElements(key)
     {
         let value = this.InstrumentElements[key];
-        for (let i = value.length; i >= 0; i--)
+        for (let i = value.length - 1; i >= 0; i--)
         {
-            let doc = document.getElementById(value.pop())
+            let removed = value.pop();
+            let doc = document.getElementById(removed)
             if (doc != null)
             {
                 doc.remove();
@@ -154,13 +158,21 @@ html, body {
         delete this.InstrumentElements[key];
     }
 
-    CreateCanvas(alias, width, height, heading = undefined, style = "border:1px solid #c3c3c3;")
+    CreateCanvas(alias, width, height, heading = false, style = "border:1px solid #c3c3c3;")
     {
         let id = "canvas_" + alias;
+        if (id in this.InstrumentElements)
+        {
+            let doc = document.getElementById(id + "_element");
+            doc.setAttribute("width", width.toString());
+            doc.setAttribute("height", height.toString());
+            doc.setAttribute("style", style);
+            return doc;
+        }
         let name = "";
         let html = "";
         this.InstrumentElements[id] = [];
-        if (heading != undefined)
+        if (heading)
         {
             name = id + "_heading";
             html += `<h3 id="` + name + `">` + heading + `</h3>\n`;
@@ -171,8 +183,9 @@ html, body {
         this.InstrumentElements[id].push(name);
 
         name = id + "_element";
-        html += `  <canvas id="` + name + `">Your browser does not support the canvas element.</canvas>\n</div>`;
+        html += `  <canvas id="` + name + `">Your browser does not support the canvas element.</canvas>\n`;
         this.InstrumentElements[id].push(name);
+        html += `</div>`;
         this.InstrumentContainer.insertAdjacentHTML('beforeend', html);
 
         let canvas = document.getElementById(name);
@@ -197,12 +210,16 @@ html, body {
 
     // Settings
 
-    SelectRow(row = this.InstrumentRows)
+    SelectRow(row = this.InstrumentRows, heading = false)
     {
+        if (row > this.InstrumentRows)
+        {
+            this.CreateRow(heading)
+        }
         this.SelectedRow = row;
     }
 
-    CreateRow(heading = undefined)
+    CreateRow(heading = false)
     {
         this.InstrumentRows++;
         this.SelectedRow = this.InstrumentRows;
@@ -212,7 +229,7 @@ html, body {
         let name = id + "_container_parent";
         this.InstrumentElements[id].push(name);
         let html = `<div id="` + name + "" + `" class="` + name + `">\n`;
-        if (heading != undefined)
+        if (heading != false)
         {
             name = id + "_heading";
             html += `  <p id="` + name + `" style="display: flex; align-items: center; justify-content: center;">` + heading + `</p>\n`;
@@ -241,9 +258,14 @@ html, body {
     CreateSlider(alias, min, max, value, step = 1, heading = undefined)
     {
         let id = "slider_" + alias;
-        if (document.getElementById(id + "_container") != null)
+        if (id in this.InstrumentElements)
         {
-            return document.getElementById(id + "_element");
+            let doc = document.getElementById(id + "_element");
+            doc.setAttribute("min", min.toString());
+            doc.setAttribute("max", max.toString());
+            doc.setAttribute("value", value.toString());
+            doc.setAttribute("step", step.toString());
+            return doc;
         }
         this.InstrumentElements[id] = [];
         let name = id + "_container";
@@ -272,9 +294,11 @@ html, body {
     CreateCombo(alias, options, selected = 0, heading = undefined)
     {
         let id = "combo_" + alias;
-        if (document.getElementById(id + "_container") != null)
+        if (id in this.InstrumentElements)
         {
-            return document.getElementById(id + "_element");
+            // TODO: add updating options and selected
+            let doc = document.getElementById(id + "_element");
+            return doc;
         }
         this.InstrumentElements[id] = [];
         let name = id + "_container";

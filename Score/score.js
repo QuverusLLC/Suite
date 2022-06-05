@@ -194,7 +194,7 @@ class _Score
         {
             this.Instrument.CountKeys();
             this.Instrument.Resize();
-            this.Instrument.Render();
+            this.Instrument.Render(true);
         }
         else if (this.Instrument.Name == "guitar")
         {
@@ -216,7 +216,7 @@ class _Score
 
     PianoSettings()
     {
-        Manager.CreateRow();
+        Manager.SelectRow(1);
 
         Manager.CreateSlider("width", 400, 1000, this.Instrument.PianoWidth, 1, "Width").oninput = function()
         {
@@ -240,7 +240,7 @@ class _Score
 
     GuitarSettings()
     {
-        Manager.CreateRow()
+        Manager.SelectRow(1);
 
         Manager.CreateCombo("string_count", [[4,4], [5,5], [6,6], [7,7], [8,8], [9,9], [10,10], [11,11], [12,12]], this.Instrument.StringCount - 4, "Strings").oninput = function()
         {
@@ -265,7 +265,7 @@ class _Score
             this.Instrument.AddTuningCombo(string);
         }
 
-        Manager.CreateRow();
+        Manager.SelectRow(2);
 
         Manager.CreateSlider("width", 400, 1000, this.Instrument.NeckWidth, 1, "Width").oninput = function()
         {

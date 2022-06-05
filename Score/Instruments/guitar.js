@@ -110,15 +110,15 @@ class Guitar
         }
     }
 
-    Render(heading = undefined)
+    Render(heading = false)
     {
-        if (heading == undefined)
+        if (heading == false)
         {
             this.canvas = Manager.CreateCanvas("scale", this.NeckWidth, this.NeckHeight);
         }
         else
         {
-            this.canvas = Manager.CreateCanvas("scale", this.NeckWidth, this.NeckHeight, heading);
+            this.canvas = Manager.CreateCanvas("scale", this.NeckWidth, this.NeckHeight, "Scale");
         }
         this.ctx = this.canvas.getContext("2d");
 
