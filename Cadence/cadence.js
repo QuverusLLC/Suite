@@ -3,6 +3,7 @@ const Manager = new _Manager();
 function Initialize()
 {
     console.log("Hello world!");
+    console.log(viewportWidth, viewportHeight);
 }
 
 let leftPanel = document.getElementById("panel-left");
