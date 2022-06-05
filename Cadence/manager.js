@@ -119,7 +119,6 @@ html, body {
     justify-content: center;
     padding: 0px;
     margin: 0px;
-    top: -20px;
     height: 30px;
     background: var(--dvSuite_background1);
 }
@@ -129,7 +128,6 @@ html, body {
     position: relative;
     display: inline-block;
     padding: 0px;
-    top: -20px;
     width: 100%;
     height: 92%;
 }

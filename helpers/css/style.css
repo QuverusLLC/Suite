@@ -17,8 +17,8 @@ body {
     color: var(--dvSuite_foreground);
     font-family: var(--dvSuite_font-family);
     letter-spacing: var(--dvSuite_letter-spacing);
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vh;
     margin: 0px;
 }
 
