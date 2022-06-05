@@ -22,14 +22,14 @@ class _Manager
         this.StyleContainer = document.getElementById("style_container");
 
         html = `
-<div class="title_name" class="title_name" style="padding: 10px;">
+        <div class="title_name" class="title_name" style="padding-left: 10px; padding-right: 5px">
     <h2>Score</h2>
 </div>
 <div class="title_version" class="title_version" style="padding: 2px;">
     <sup style="font-size: 10px;">0.1.1</sup>
 </div>
-<div class="title_other" class="title_other" style="padding: 20px;">
-    <p style="font-size: 12px; text-align: right;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
+<div class="title_other" class="title_other" style="padding-left: 20px;">
+    <p style="font-size: 12px;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
 </div>`;
         this.TitleContainer.insertAdjacentHTML('beforeend', html);
         this.TitleContainer.style.display = "flex";

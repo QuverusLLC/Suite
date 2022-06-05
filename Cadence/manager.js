@@ -14,14 +14,14 @@ class _Manager
         this.StyleContainer = document.getElementById("style_container");
 
         html = `
-<div class="title_name" class="title_name" style="padding: 10px;">
+<div class="title_name" class="title_name" style="padding-left: 10px; padding-right: 5px">
     <h2>Cadence</h2>
 </div>
-<div class="title_version" class="title_version" style="padding: 2px;">
+<div class="title_version" class="title_version">
     <sup style="font-size: 10px;">0.0.2</sup>
 </div>
-<div class="title_other" class="title_other" style="padding: 20px;">
-    <p style="font-size: 12px; text-align: right;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
+<div class="title_other" class="title_other" style="padding-left: 20px;">
+    <p style="font-size: 12px;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
 </div>`;
         this.TitleContainer.insertAdjacentHTML('beforeend', html);
         this.TitleContainer.style.display = "flex";
@@ -129,7 +129,7 @@ html, body {
     display: inline-block;
     padding: 0px;
     width: 100%;
-    height: 92%;
+    height: 100%;
 }
 .left-body-container {
     justify-content: center;
@@ -157,8 +157,6 @@ html, body {
     width: 5%;
     min-width: 24px;
     max-width: 24px;
-    top: -1px;
-    left: -1px;
     font-family: var(--dvSuite_font-family);
     letter-spacing: var(--dvSuite_letter-spacing);
     font-size: var(--dvSuite_font-size);
@@ -171,23 +169,21 @@ html, body {
     overflow: hidden;
     height: 100%;
     min-width: 173px;
-    width: 81%;
+    width: 88%;
     max-width: 90%;
     font-family: var(--dvSuite_font-family);
     letter-spacing: var(--dvSuite_letter-spacing);
     font-size: var(--dvSuite_font-size);
 }
 .left-content-syllables-container {
-    float: right;
+    float: left;
     position: relative;
     vertical-align: top;
-    overflow: hidden;
+    overflow: shown;
     height: 100%;
     width: 5%;
     min-width: 20px;
     max-width: 20px;
-    top: -1px;
-    right: -1px;
     font-family: var(--dvSuite_font-family);
     letter-spacing: var(--dvSuite_letter-spacing);
     font-size: var(--dvSuite_font-size);
