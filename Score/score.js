@@ -1,5 +1,8 @@
+const Suite = new _Suite();
+
 function Initialize()
 {
+    Suite.Initialize("Score", "0.1.1");
     Score.Initialize();
 }
 

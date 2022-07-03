@@ -15,29 +15,9 @@ class _Manager
     DefineElements()
     {
         let html = "";
-        this.TitleContainer = document.getElementById("title_container");
-        this.HeaderContainer = document.getElementById("header_container");
-        this.BodyContainer = document.getElementById("body_container");
-        this.FooterContainer = document.getElementById("footer_container");
-        this.StyleContainer = document.getElementById("style_container");
-
-        html = `
-        <div class="title_name" class="title_name" style="padding-left: 10px; padding-right: 5px">
-    <h2>Score</h2>
-</div>
-<div class="title_version" class="title_version" style="padding: 2px;">
-    <sup style="font-size: 10px;">0.1.1</sup>
-</div>
-<div class="title_other" class="title_other" style="padding-left: 20px;">
-    <p style="font-size: 12px;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
-</div>`;
-        this.TitleContainer.insertAdjacentHTML('beforeend', html);
-        this.TitleContainer.style.display = "flex";
-        this.TitleContainer.style.width = "100%";
-        this.TitleContainer.style.alignItems = "center";
-        this.TitleContainer.style.margin = "0px";
-        this.TitleContainer.style.border = "1px solid var(--dvSuite_separator)"
-        this.TitleContainer.style.height = "25px";
+        this.HeaderContainer = Suite.GetHeader();
+        this.BodyContainer = Suite.GetBody();
+        this.StyleContainer = Suite.GetStyle();
 
         html = `
 <div id="settings_container" class="settings_container" style="display: flex; align-items: center;">

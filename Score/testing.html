@@ -4,15 +4,21 @@
     <link rel="stylesheet" href="../helpers/css/style.css">
   </head>
   <body>
-    <div id="website_header" class="website_header" style="height: 49px;"></div>
-    <div id="suite_container" class="suite_container" style="height: 100vh; width: 100vh;">
-      <div id="title_container" class="title_container"></div>
-      <div id="header_container" class="header_container"></div>
-      <div id="body_container" class="body_container"></div>
-      <div id="footer_container" class="footer_container"></div>
+    <div id="suite_container" class="suite_container">
+      <div id="title_container" class="title_container" style="width: 100%;"></div>
+      <div id="header_container" class="header_container" style="width: 100%;">
+        <div id="inst_header" class="inst_header" style="width: 100%; height:100%;"></div>
+      </div>
+      <div id="body_container" class="body_container" style="width: 100%;">
+        <div id="inst_body" class="inst_body" style="width: 100%; height:100%;"></div>
+      </div>
+      <div id="footer_container" class="footer_container" style="width: 100%;"></div>
     </div>
     <style id="style_container"></style>
+    <style id="inst_style"></style>
 
+    <script type="text/javascript" src="../helpers/js/helpers.js"></script>
+    <script type="text/javascript" src="../helpers/js/suite.js"></script>
     <script type="text/javascript" src="manager.js"></script>
     <script type="text/javascript" src="Instruments/piano.js"></script>
     <script type="text/javascript" src="Instruments/guitar.js"></script>

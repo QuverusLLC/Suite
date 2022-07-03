@@ -4,89 +4,63 @@ class _Manager
     {
         this.DefineElements();
     }
+
     DefineElements()
     {
         let html = "";
-        this.TitleContainer = document.getElementById("title_container");
-        this.HeaderContainer = document.getElementById("header_container");
-        this.BodyContainer = document.getElementById("body_container");
-        this.FooterContainer = document.getElementById("footer_container");
-        this.StyleContainer = document.getElementById("style_container");
+        this.Header = Suite.GetHeader();
+        this.Body = Suite.GetBody();
+        this.Style = Suite.GetStyle();
+
+
+        html = `Header Container`;
+        this.Header.insertAdjacentHTML('beforeend', html);
+        this.Header.style.display = "flex";
+        this.Header.style.alignItems = "center";
 
         html = `
-<div class="title_name" class="title_name" style="padding-left: 10px; padding-right: 5px">
-    <h2>Cadence</h2>
-</div>
-<div class="title_version" class="title_version">
-    <sup style="font-size: 10px;">0.0.2</sup>
-</div>
-<div class="title_other" class="title_other" style="padding-left: 20px;">
-    <p style="font-size: 12px;">Part of DAAV, LLC's <a href="https://github.com/daavllc/Suite" target="_blank" rel="noopener noreferrer">suite</a> of open source tools</p>
-</div>`;
-        this.TitleContainer.insertAdjacentHTML('beforeend', html);
-        this.TitleContainer.style.display = "flex";
-        this.TitleContainer.style.width = "100%";
-        this.TitleContainer.style.alignItems = "center";
-        this.TitleContainer.style.border = "1px solid var(--dvSuite_separator)"
-        this.TitleContainer.style.height = "25px";
-
-        html = `
-Header Container`;
-        this.HeaderContainer.insertAdjacentHTML('beforeend', html);
-        this.HeaderContainer.style.display = "flex";
-        this.HeaderContainer.style.width = "100%";
-        this.HeaderContainer.style.alignItems = "center";
-        this.HeaderContainer.style.border = "1px solid var(--dvSuite_separator)"
-        this.HeaderContainer.style.height = "40px";
-
-        html = `
-<div id="panel-left" class="panel-left">
-    <div id="panel-left-header-container" class="panel-left-header-container">
-        <h3 style="padding: 5px; text-align: left;">Lyrics Panel</h3>
-    </div>
-    <div id="panel-left-content-container" class="panel-left-content-container">
-        <div id="left-body-container" class="left-body-container">
-            <div id="left-content-number-container" class="left-content-number-container">
-                <textarea readonly id="lyrics-lines" class="lyrics-lines" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
-            </div>
-            <div id="left-content-lyrics-container" class="left-content-lyrics-container">
-                <textarea id="lyrics-textarea" class="lyrics-textarea" placeholder="Type lyrics here" style="height: 100%; width: 100%; overflow: auto; overflow: hidden;"></textarea>
-            </div>
-            <div id="left-content-syllables-container" class="left-content-syllables-container">
-                <textarea readonly id="lyrics-syllables" class="lyrics-syllables" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
+<div id="panel-container" class="panel-container" style="width: 100%; height: 100%;">
+    <div id="panel-left" class="panel-left">
+        <div id="panel-left-header-container" class="panel-left-header-container">
+            <h3 style="padding: 5px; text-align: left;">Lyrics Panel</h3>
+        </div>
+        <div id="panel-left-content-container" class="panel-left-content-container">
+            <div id="left-body-container" class="left-body-container">
+                <div id="left-content-number-container" class="left-content-number-container">
+                    <textarea readonly id="lyrics-lines" class="lyrics-lines" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
+                </div>
+                <div id="left-content-lyrics-container" class="left-content-lyrics-container">
+                    <textarea id="lyrics-textarea" class="lyrics-textarea" placeholder="Type lyrics here" style="height: 100%; width: 100%; overflow: auto; overflow: hidden;"></textarea>
+                </div>
+                <div id="left-content-syllables-container" class="left-content-syllables-container">
+                    <textarea readonly id="lyrics-syllables" class="lyrics-syllables" style="height: 100%; width: 100%; overflow: hidden;"></textarea>
+                </div>
             </div>
         </div>
+        <div class="resizer panel-left-resizer"></div>
     </div>
-    <div class="resizer panel-left-resizer"></div>
-</div>
-<div id="panel-middle" class="panel-middle" style="width: 40%;">
-    <div id="panel-middle-header-container" class="panel-middle-header-container">
-        <h3 style="padding: 5px; text-align: center;">Helper Panel</h3>
+    <div id="panel-middle" class="panel-middle" style="width: 40%;">
+        <div id="panel-middle-header-container" class="panel-middle-header-container">
+            <h3 style="padding: 5px; text-align: center;">Helper Panel</h3>
+        </div>
+        <div id="panel-middle-content-container" class="panel-middle-content-container"></div>
     </div>
-    <div id="panel-middle-content-container" class="panel-middle-content-container"></div>
-</div>
-<div id="panel-right" class="panel-right">
-    <div id="panel-right-header-container" class="panel-right-header-container">
-        <h3 style="padding: 5px; text-align: right;">Parameter Panel</h3>
+    <div id="panel-right" class="panel-right">
+        <div id="panel-right-header-container" class="panel-right-header-container">
+            <h3 style="padding: 5px; text-align: right;">Parameter Panel</h3>
+        </div>
+        <div id="panel-right-content-container" class="panel-right-content-container"></div>
+        <div class="resizer panel-right-resizer"></div>
     </div>
-    <div id="panel-right-content-container" class="panel-right-content-container"></div>
-    <div class="resizer panel-right-resizer"></div>
 </div>`;
-        this.BodyContainer.insertAdjacentHTML('beforeend', html);
-        this.BodyContainer.style.display = "flex";
-        this.BodyContainer.style.justifyContent = "center";
-        this.BodyContainer.style.position = "relative";
-        this.BodyContainer.style.padding = "0px";
-        this.BodyContainer.style.margin = "0px";
-        this.BodyContainer.style.height = "84%";
+        this.Body.insertAdjacentHTML('beforeend', html);
+
+        this.PanelContainer = document.getElementById('panel-container');
+        this.PanelContainer.style.display = "flex";
+        this.PanelContainer.style.justifyContent = "center";
+        this.PanelContainer.style.position = "relative";
 
         html = `
-html, body {
-    background: var(--dvSuite_background);
-    height: 100%;
-    width: 100%;
-    margin: 0px;
-}
 .resizer {
     position: absolute;
 }
@@ -109,7 +83,6 @@ html, body {
 .panel-right {
     border: 1px solid var(--dvSuite_separator);
     position: relative;
-    width: 100%;
     height: 100%;
 }
 .panel-left-header-container,
@@ -121,6 +94,7 @@ html, body {
     margin: 0px;
     height: 30px;
     background: var(--dvSuite_background1);
+    float: top;
 }
 .panel-middle-content-container,
 .panel-left-content-container,
@@ -189,6 +163,6 @@ html, body {
     font-size: var(--dvSuite_font-size);
     text-align: right;
 }`;
-        this.StyleContainer.insertAdjacentHTML('beforeend', html);
+        this.Style.insertAdjacentHTML('beforeend', html);
     }
 }
