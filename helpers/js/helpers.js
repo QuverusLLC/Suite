@@ -45,3 +45,9 @@ function dvGetScrollbarSize()
 
     return scrollbar;
 }
+
+function dvResize()
+{
+    console.log("Resizing!");
+    Suite.Resize();
+}

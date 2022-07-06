@@ -1,8 +1,10 @@
 const Suite = new _Suite();
+const Manager = new _Manager();
 
 function Initialize()
 {
-    Suite.Initialize("Score", "0.1.1");
+    Suite.Initialize("Score", "0.2.0");
+    Manager.Initialize();
     Score.Initialize();
 }
 
@@ -284,5 +286,4 @@ class _Score
         }
     }
 }
-const Manager = new _Manager();
 const Score = new _Score();

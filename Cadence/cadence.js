@@ -1,8 +1,10 @@
 const Suite = new _Suite();
+const Manager = new _Manager();
 
 function Initialize()
 {
-    Suite.Initialize("Cadence", "0.0.2");
+    Suite.Initialize("Cadence", "0.0.3");
+    Manager.Initialize();
     Cadence.Initialize();
 }
 
@@ -51,6 +53,9 @@ class _Cadence
                     Cadence.Panels["Left"].style.width = `${Cadence.Widths["Left"]}px`;
                 }
             }
+            //this.Panel["Left"]["LyricLines"].style.width = '24px';
+            //this.Panel["Left"]["LyricSyllables"].style.width = '24px';
+            //this.Panel["Left"]["Lyrics"].style.width = `${Cadence.Widths["Left"] - (24 + 28)}px`
             Cadence.CheckLines();
         }
     }
@@ -62,6 +67,14 @@ class _Cadence
             "Left": document.getElementById("panel-left"),
             "Middle": document.getElementById("panel-middle"),
             "Right": document.getElementById("panel-right")
+        }
+
+        this.Panel = {
+            "Left": {
+                "LyricLines": document.getElementById("left-content-number-container"),
+                "Lyrics": document.getElementById("left-content-lyrics-container"),
+                "LyricSyllables": document.getElementById("left-content-syllables-container")
+            }
         }
 
         this.Styles = {
@@ -155,5 +168,4 @@ class _Cadence
     }
 }
 
-const Manager = new _Manager();
 const Cadence = new _Cadence();

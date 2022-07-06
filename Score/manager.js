@@ -1,7 +1,7 @@
 class _Manager
 {
     // Manages HTML elements
-    constructor()
+    Initialize()
     {
         this.InstrumentElements = {}
         this.DefineElements();
