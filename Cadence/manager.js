@@ -55,17 +55,6 @@ class _Manager
     position: relative;
     height: 100%;
 }
-.panel-left-header-container,
-.panel-middle-header-container,
-.panel-right-header-container {
-    position: relative;
-    justify-content: center;
-    padding: 0px;
-    margin: 0px;
-    height: 30px;
-    background: var(--dvSuite_background1);
-    float: top;
-}
 .panel-middle-content-container,
 .panel-left-content-container,
 .panel-right-content-container {
@@ -84,26 +73,35 @@ class _Manager
     width: 100%;
     height: 100%;
     border: 1px solid var(--dvSuite_separator);
-    overflow: hidden;
+    overflow: auto;
+    display: inline-flex;
 }
 .panel-left,
 .panel-right {
-    position: relative;
     width: 30%;
-    overflow: hidden;
 }
-.left-content-number-container {
+.left-content-number-container,
+.left-content-syllables-container {
     float: left;
     position: relative;
     vertical-align: top;
     overflow: hidden;
     height: 100%;
-    width: 8%;
-    min-width: 24px;
+    width: 24px;
     font-family: var(--dvSuite_font-family);
     letter-spacing: var(--dvSuite_letter-spacing);
     font-size: var(--dvSuite_font-size);
-    text-align: left;
+}
+ {
+    float: left;
+    position: relative;
+    vertical-align: top;
+    overflow: hidden;
+    height: 100%;
+    width: 24px;
+    font-family: var(--dvSuite_font-family);
+    letter-spacing: var(--dvSuite_letter-spacing);
+    font-size: var(--dvSuite_font-size);
 }
 .left-content-lyrics-container {
     float: left;
@@ -111,25 +109,10 @@ class _Manager
     vertical-align: top;
     overflow: hidden;
     height: 100%;
-    min-width: 173px;
-    width: 80%;
-    max-width: 90%;
     font-family: var(--dvSuite_font-family);
     letter-spacing: var(--dvSuite_letter-spacing);
     font-size: var(--dvSuite_font-size);
-}
-.left-content-syllables-container {
-    float: right;
-    position: relative;
-    vertical-align: top;
-    overflow: hidden;
-    height: 100%;
-    width: 8%;
-    min-width: 24px;
-    font-family: var(--dvSuite_font-family);
-    letter-spacing: var(--dvSuite_letter-spacing);
-    font-size: var(--dvSuite_font-size);
-    text-align: right;
+    flex-grow: 100;
 }`);
     }
 }

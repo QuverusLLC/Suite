@@ -3,7 +3,7 @@ const Manager = new _Manager();
 
 function Initialize()
 {
-    Suite.Initialize("Cadence", "0.0.3");
+    Suite.Initialize("Cadence", "0.0.4");
     Manager.Initialize();
     Cadence.Initialize();
 }
@@ -136,8 +136,8 @@ class _Cadence
             syllables.push(0)
             for (let word of line.replace(/\b/, " ").split(" "))
             {
-                //syllables[i] += GetSyllable(word)
-                syllables[i] += word.length;
+                syllables[i] += GetSyllable(word)
+                //syllables[i] += word.length;
             }
             i++;
         }
@@ -146,23 +146,21 @@ class _Cadence
     
     UpdateCounters(lines, syllables)
     {
+        let charsPerLine = dvGetTextareaCharactersPerLine(this.lyricInput);
+
         this.lyricLines.value = "";
-        this.lyricSyllables.value = ""; // 8.238 - 8.5238 = 8.3809 // 180/21 - 188/21 = 8.5713 - 8.95
-        let rows = this.lyricInput.rows;
-        let lht = parseInt(window.getComputedStyle(this.lyricInput).lineHeight, 10)
-        let columns = parseInt(this.lyricInput.cols, 10);
-        console.log(columns, rows)
-        // 173-179/20: 8.55, 27: 8.33, 217-221/26: 8.34
+        this.lyricSyllables.value = "";
+        
         for (let i = 0; i < lines.length; i++)
         {
             this.lyricLines.value += (i + 1).toString() + "\n";
             this.lyricSyllables.value += syllables[i].toString() + "\n";
-            let remaining = lines[i].length;
-            while (remaining > columns) // TODO: this doesn't work: determine number of rows in textarea to add line numbers
+            let characters = lines[i].length - charsPerLine;
+            while (characters >= 1)
             {
                 this.lyricLines.value += "\n";
                 this.lyricSyllables.value += "\n";
-                remaining -= columns;
+                characters -= charsPerLine;
             }
         }
     }

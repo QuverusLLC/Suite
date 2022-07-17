@@ -51,3 +51,12 @@ function dvResize()
     console.log("Resizing!");
     Suite.Resize();
 }
+
+function dvGetTextareaCharactersPerLine(ta)
+{
+    let width = parseInt(window.getComputedStyle(ta).width, 10)
+    let fontWidth = 12 * .7;
+    let charactersPerLine = parseInt(width/fontWidth, 10);
+    console.log(charactersPerLine)
+    return charactersPerLine;
+}
