@@ -17,10 +17,10 @@ A suite of business and creator tools for assisting in management and production
 
 # Table of Contents
 
--   [ ] [Astrolabe](https://daavllc.github.io/Suite/dist/html/Astrolabe.html) - all-in-one mapping and navigation suite
--   [ ] [Cadence](https://daavllc.github.io/Suite/dist/html/Cadence.html) - lyric and creative writing suite
--   [x] [Score](https://daavllc.github.io/Suite/dist/html/Score.html) - music scale suite
--   [ ] [Synopsis](https://daavllc.github.io/Suite/dist/html/Synopsis.html) - business management suite
+-   [ ] [Astrolabe]() - all-in-one mapping and navigation suite
+-   [ ] [Cadence](https://daavllc.github.io/Suite/dist/Cadence) - lyric and creative writing suite
+-   [x] [Score](https://daavllc.github.io/Suite/dist/Score) - music scale suite
+-   [ ] [Synopsis]() - business management suite
 
 # Development Status
 
