@@ -1,0 +1,131 @@
+/*
+    ------------------------
+        Piano
+    ------------------------
+*/
+/* Settings */
+#PianoSettings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+#PianoSettingsWidth,
+#PianoSettingsHeight,
+#PianoSettingsOctaves {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20%;
+}
+/* Render */
+#containerPiano {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+#PianoScale,
+#PianoTriads,
+#PianoChords {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 0px;
+}
+/* --------------------
+    PianoRoll
+*/
+.PianoRoll {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    margin: 0px;
+    border: 1px solid black;
+}
+/* PianoOctave */
+.PianoOctaveWrap {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin: 0px;
+}
+.PianoOctave {
+    display: flex;
+    width: 100%;
+}
+.OctaveWhite,
+.OctaveBorder,
+.OctaveBlack {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+/* PianoOctaveWhite */
+.OctaveWhite {
+    background: red;
+    height: 100%
+}
+.KeyWhite {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 14.28%; 
+    height: 100%;
+    background: #FFFFFF;
+}
+.KeyWhiteLabel {
+    color: #00ba6c;
+    margin-bottom: 5%;
+    font-size: 100%;
+    font-weight: 0;
+}
+/* PianoOctaveBorder */
+.OctaveBorder {
+    margin-left: -100%;
+    height: 100%;
+}
+.KeyBorder {
+    width: 14.2%;
+    height: 100%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+/* PianoOctaveBlack */
+.OctaveBlack {
+    height: 60%;
+    margin-left: -100%;
+}
+.KeySpacerStart {
+    margin: 4.38%;
+}
+.KeySpacerHalf {
+    margin-left: 3.28%;
+}
+.KeySpacerWhole {
+    margin-left: 17.56%;
+}
+.KeyBlack {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 11%;
+    height: 100%;
+    background: #222222;
+}
+.KeyBlackLabel {
+    color: #00ba6c;
+    margin-bottom: 5%;
+    font-size: 100%;
+    font-weight: 0;
+}

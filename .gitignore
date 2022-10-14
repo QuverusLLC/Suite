@@ -1,0 +1,9 @@
+node_modules/
+src/*/js
+build/
+
+# Editors
+.vscode/
+
+# Mac
+.DS_Store
