@@ -1,14 +1,14 @@
 {
-    "name": "@daavllc/suite",
+    "name": "@quverusllc/suite",
     "productName": "Suite",
     "description": "A suite of business and creator tools for assisting in management and production",
     "version": "0.1.0",
     "license": "MIT",
     "author": {
-        "name": "DAAV, LLC",
-        "email": "contact@daav.us"
+        "name": "Quverus LLC",
+        "email": "contact@quver.us"
     },
-    "copyright": "Copyright ©2022 DAAV, LLC",
+    "copyright": "Copyright ©2022 Quverus LLC",
     "private": true,
     "scripts": {
         "format": "p() { prettier ${@:- --check} '**/*.{css,js,json,md,ts,tsx}'; }; p",

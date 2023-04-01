@@ -1,3 +1,65 @@
+:root {
+    --dvSuite_background: #000000;
+    --dvSuite_background1: #111111;
+    --dvSuite_foreground: #FFFFFF;
+    --dvSuite_foreground1: #00ba6c;
+    --dvSuite_separator: #444444;
+    --dvSuite_font-family: "Roboto Mono", sans-serif;
+    --dvSuite_font-size: 12px;
+    --dvSuite_font-style: normal;
+    --dvSuite_font-weight: 100;
+    --dvSuite_letter-spacing: 1px;
+}
+
+html,
+body {
+    background: var(--dvSuite_background);
+    color: var(--dvSuite_foreground);
+    font-family: var(--dvSuite_font-family);
+    letter-spacing: var(--dvSuite_letter-spacing);
+    height: 100vh;
+    width: 100vh;
+    margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    color: var(--dvSuite_foreground);
+    font-family: var(--dvSuite_font-family);
+    letter-spacing: var(--dvSuite_letter-spacing);
+}
+
+select,
+button {
+    background: var(--dvSuite_background);
+    color: var(--dvSuite_foreground);
+    font-family: var(--dvSuite_font-family);
+    font-size: var(--dvSuite_font-size);
+    letter-spacing: var(--dvSuite_letter-spacing);
+    border: 1px solid var(--dvSuite_separator)
+}
+
+input,
+textarea {
+    background: var(--dvSuite_background);
+    color: var(--dvSuite_foreground);
+    font-family: var(--dvSuite_font-family);
+    font-size: var(--dvSuite_font-size);
+    letter-spacing: var(--dvSuite_letter-spacing);
+    border: 0px;
+}
+
+textarea {
+    resize: none;
+    text-shadow: none;
+} :focus {
+    outline: none;
+}
+
+
 /* Normalization */
 
 html {
@@ -29,8 +91,7 @@ video {
     vertical-align: baseline; /* normalize vertical alignment */
 }
 
-audio:not([controls]) {
-    /* Display audio with controls */
+audio:not([controls]) { /* Display audio with controls */
     display: none;
     height: 0;
 }
@@ -110,9 +171,9 @@ pre {
 }
 
 code,
-kbd,
-pre,
-samp {
+  kbd,
+  pre,
+  samp {
     font-family: monospace, monospace;
     font-size: 1em;
 }

@@ -5,7 +5,7 @@ const rules = {
         "block",
         [
             "",
-            " Copyright 2022 DAAV, LLC",
+            " Copyright 2022 Quverus LLC",
             " Licensed under the MIT license. See LICENSE for details.",
             "",
         ],

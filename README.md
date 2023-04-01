@@ -11,15 +11,15 @@ A suite of business and creator tools for assisting in management and production
 -   Project Lead: [Anonoei](https://github.com/Anonoei)
 -   Language: HTML, CSS, and TypeScript
 -   License: MIT
--   Status: [DPS5](https://daav.us/dps)
+-   Status: [DPS5](https://quver.us/dps)
 -   Dependencies:
     -   A web browser
 
 # Table of Contents
 
 -   [ ] [Astrolabe]() - all-in-one mapping and navigation suite
--   [ ] [Cadence](https://daavllc.github.io/Suite/dist/Cadence) - lyric and creative writing suite
--   [x] [Score](https://daavllc.github.io/Suite/dist/Score) - music scale suite
+-   [ ] [Cadence](https://quverusllc.github.io/Suite/dist/Cadence) - lyric and creative writing suite
+-   [x] [Score](https://quverusllc.github.io/Suite/dist/Score) - music scale suite
 -   [ ] [Synopsis]() - business management suite
 
 # Development Status
@@ -27,29 +27,29 @@ A suite of business and creator tools for assisting in management and production
 -   [ ] Initial release
 -   [ ] Initial documentation
 -   [ ] Applications
-    -   [ ] [Astrolabe](https:/github.com/daavllc/Suite/blob/master/src/Astrolabe)
+    -   [ ] [Astrolabe](https:/github.com/quverusllc/Suite/blob/master/src/Astrolabe)
         -   [ ] Initial release
         -   [ ] Development build
         -   [ ] Begin development
-    -   [x] [Cadence](https:/github.com/daavllc/Suite/blob/master/src/Cadence)
+    -   [x] [Cadence](https:/github.com/quverusllc/Suite/blob/master/src/Cadence)
         -   [ ] Initial release
         -   [ ] Development build
         -   [x] Begin development
-    -   [x] [Score](https:/github.com/daavllc/Suite/blob/master/src/Score)
+    -   [x] [Score](https:/github.com/quverusllc/Suite/blob/master/src/Score)
         -   [ ] Initial release
         -   [x] Development build
         -   [x] Instruments
             -   [x] Piano
             -   [X] Guitar
         -   [x] Begin development
-    -   [ ] [Synopsis](https:/github.com/daavllc/Suite/blob/master/src/Synopsis)
+    -   [ ] [Synopsis](https:/github.com/quverusllc/Suite/blob/master/src/Synopsis)
         -   [ ] Initial release
         -   [ ] Development build
         -   [ ] Begin development
 
 # Using dvSuite
 
-1.  Go to the [daavllc.github.io](https://daavllc.github.io/Suite) page
+1.  Go to the [quverusllc.github.io](https://quverusllc.github.io/Suite) page
 2.  Have fun!
 
 # Contributing to Suite
@@ -57,7 +57,7 @@ A suite of business and creator tools for assisting in management and production
 1.  Install required software
     -   [node](https://nodejs.org/en/download/)
 2.  Download from source
-    -   Using Git: Run `git clone https://github.com/daavllc/Suite.git`
+    -   Using Git: Run `git clone https://github.com/quverusllc/Suite.git`
     -   Download from GitHub:
         1. Click the `Code` button near the top right > Download ZIP, then extract the file
 3.  Open the new `Suite` folder
